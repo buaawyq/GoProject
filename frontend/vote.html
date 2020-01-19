@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Morning Go</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{/*  <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">*/}}
+    <link rel="stylesheet" href="/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="/bootstrap-3.3.7-dist/js/jquery-3.4.1.js"></script>
+    <script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <form id="FormID" class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="firstname" class="col-sm-2 control-label">文章ID</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="articleid" placeholder="请输入文章ID">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default" onclick="login()">赞同</button>
+            </div>
+        </div>
+    </form>
+</body>
+<script>
+    function login() {
+        var user=$("#articleid").val()
+        jsonData={
+            "articleid":articleid
+        }
+        alert("调用开始")
+       $.ajax({
+            url:"http://localhost:8080/api/login?id=11&name=wang",
+            type:"post",
+            data:jsonData,
+            dataType:"json",
+            cache:false,//false是不缓存，true为缓存
+            async:false,//true为异步，false为同步
+            success:function(result){
+                alert(JSON.stringify(result))
+                alert("调用成功")//请求成功时
+            }
+        })
+    }
+</script>
+</html>
